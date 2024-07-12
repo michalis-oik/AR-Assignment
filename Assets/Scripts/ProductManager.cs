@@ -10,7 +10,7 @@ public class ProductManager : MonoBehaviour
     [SerializeField] private string apiUrl = "https://dummyjson.com/products";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
-    private int pivot = 300;
+    private Vector3 pivot = new Vector3(30,0,0);
 
     void Start()
     {
