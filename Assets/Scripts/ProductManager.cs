@@ -41,9 +41,9 @@ public class ProductManager : MonoBehaviour
             GameObject productGO = Instantiate(productPrefab, contentParent);
 
             // Locate the TextMeshPro and Image components inside the nested Canvas structure
-            TextMeshProUGUI nameText = productGO.transform.Find("Canvas/ProductName").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI priceText = productGO.transform.Find("Canvas/ProductPrice").GetComponent<TextMeshProUGUI>();
-            Image productImage = productGO.transform.Find("Canvas/ProductImage").GetComponent<Image>();
+            TextMeshProUGUI nameText = productGO.transform.Find("ProductName").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI priceText = productGO.transform.Find("ProductPrice").GetComponent<TextMeshProUGUI>();
+            Image productImage = productGO.transform.Find("ProductImage").GetComponent<Image>();
 
             if (nameText != null && priceText != null && productImage != null)
             {
