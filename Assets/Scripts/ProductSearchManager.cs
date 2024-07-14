@@ -11,7 +11,7 @@ public class ProductSearchManager : MonoBehaviour
     [SerializeField] private string searchUrl = "https://dummyjson.com/products/search?q=";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
-    [SerializeField] private TMP_InputField searchInput;
+    [SerializeField] private TextMeshProUGUI searchInput;
     [SerializeField] private Button searchButton;
 
     void Start()
