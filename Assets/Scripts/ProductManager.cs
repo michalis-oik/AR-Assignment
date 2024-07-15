@@ -22,7 +22,7 @@ public class ProductManager : MonoBehaviour
     {
         pageInteger = 1;
         pageNumberText.text = "Page " + pageInteger;
-        string skipElements = (pageInteger * elementsInPage).ToString();
+        string skipElements = ((pageInteger-1) * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
         ButtonRight.Instance.OnRightButtonClicked += ButtonNextPrev_OnRightButtonClicked;
         ButtonLeft.Instance.OnLeftButtonClicked += ButtonNextPrev_nLeftButtonClicked;
@@ -32,7 +32,7 @@ public class ProductManager : MonoBehaviour
     {
         pageInteger++;
         pageNumberText.text = "Page " + pageInteger;
-        string skipElements = (pageInteger * elementsInPage).ToString();
+        string skipElements = ((pageInteger-1) * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
     }
 
@@ -42,7 +42,7 @@ public class ProductManager : MonoBehaviour
         {
             pageInteger--;
             pageNumberText.text = "Page " + pageInteger;
-            string skipElements = (pageInteger * elementsInPage).ToString();
+            string skipElements = ((pageInteger-1) * elementsInPage).ToString();
             StartCoroutine(FetchProducts(skipElements));
         }
     }
