@@ -28,7 +28,6 @@ public class ProductManager : MonoBehaviour
 
     private void ButtonNextPrev_OnRightButtonClicked(object sender, EventArgs e)
     {
-        Debug.Log("right button clicked");
         pageInteger++;
         string skipElements = (pageInteger * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
@@ -36,10 +35,12 @@ public class ProductManager : MonoBehaviour
 
     private void ButtonNextPrev_nLeftButtonClicked(object sender, EventArgs e)
     {
-        Debug.Log("left button clicked");
-        pageInteger--;
-        string skipElements = (pageInteger * elementsInPage).ToString();
-        StartCoroutine(FetchProducts(skipElements));
+        if (pageInteger != 1)
+        {
+            pageInteger--;
+            string skipElements = (pageInteger * elementsInPage).ToString();
+            StartCoroutine(FetchProducts(skipElements));
+        }
     }
 
     IEnumerator FetchProducts(string skipElements)
