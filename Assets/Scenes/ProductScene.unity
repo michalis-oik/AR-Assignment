@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd289ec571c680f43b0eb335f29f4a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiUrl: https://dummyjson.com/products
   productPrefab: {fileID: 2569538411919189932, guid: 535c0f32d4722bd4d973deb30b117b32,
     type: 3}
   contentParent: {fileID: 888025292}
