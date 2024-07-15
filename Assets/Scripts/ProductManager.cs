@@ -13,6 +13,7 @@ public class ProductManager : MonoBehaviour
     private string apiUrl = "https://dummyjson.com/products?limit=12&skip=";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
+    [SerializeField] private TextMeshProUGUI pageNumberText;
     private int pageInteger;
     private int elementsInPage = 12;
     
@@ -20,6 +21,7 @@ public class ProductManager : MonoBehaviour
     void Start()
     {
         pageInteger = 1;
+        pageNumberText.text = "Page " + pageInteger;
         string skipElements = (pageInteger * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
         ButtonRight.Instance.OnRightButtonClicked += ButtonNextPrev_OnRightButtonClicked;
@@ -29,6 +31,7 @@ public class ProductManager : MonoBehaviour
     private void ButtonNextPrev_OnRightButtonClicked(object sender, EventArgs e)
     {
         pageInteger++;
+        pageNumberText.text = "Page " + pageInteger;
         string skipElements = (pageInteger * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
     }
@@ -38,6 +41,7 @@ public class ProductManager : MonoBehaviour
         if (pageInteger != 1)
         {
             pageInteger--;
+            pageNumberText.text = "Page " + pageInteger;
             string skipElements = (pageInteger * elementsInPage).ToString();
             StartCoroutine(FetchProducts(skipElements));
         }
