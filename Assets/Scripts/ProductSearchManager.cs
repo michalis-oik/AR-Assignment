@@ -94,17 +94,6 @@ public class ProductSearchManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class SearchProduct
-{
-    public int id;
-    public string title;
-    public double price;
-    public string thumbnail;  // URL to the product image
-    
-}
-
-
-[System.Serializable]
 public class SearchProductList
 {
     public List<Product> products;
