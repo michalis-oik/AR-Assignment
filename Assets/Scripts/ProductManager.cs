@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class ProductManager : MonoBehaviour
 {
@@ -16,6 +17,18 @@ public class ProductManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FetchProducts());
+        ButtonRight.Instance.OnRightButtonClicked += ButtonNextPrev_OnRightButtonClicked;
+        ButtonLeft.Instance.OnLeftButtonClicked += ButtonNextPrev_nLeftButtonClicked;
+    }
+
+    private void ButtonNextPrev_OnRightButtonClicked(object sender, EventArgs e)
+    {
+        Debug.Log("right button clicked");
+    }
+
+    private void ButtonNextPrev_nLeftButtonClicked(object sender, EventArgs e)
+    {
+        Debug.Log("left button clicked");
     }
 
     IEnumerator FetchProducts()
