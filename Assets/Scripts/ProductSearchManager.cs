@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ProductSearchManager : MonoBehaviour
 {
     [SerializeField] private string searchUrl = "https://dummyjson.com/products/search?q=";
+    [SerializeField] private string searchUrlEnd = "&limit=10&skip=0";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
     [SerializeField] private TMP_InputField searchInput;
@@ -30,7 +31,7 @@ public class ProductSearchManager : MonoBehaviour
 
     IEnumerator FetchSearchResults(string query)
     {
-        UnityWebRequest request = UnityWebRequest.Get(searchUrl + query);
+        UnityWebRequest request = UnityWebRequest.Get(searchUrl + query + searchUrlEnd);
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)

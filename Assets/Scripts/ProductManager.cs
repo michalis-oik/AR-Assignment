@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ProductManager : MonoBehaviour
 {
     //[SerializeField] private string apiUrl = "https://dummyjson.com/products";
-    private string apiUrl = "https://dummyjson.com/products?limit=15&skip=15";
+    private string apiUrl = "https://dummyjson.com/products?limit=12&skip=12";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
     
