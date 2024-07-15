@@ -9,14 +9,19 @@ using System;
 public class ProductManager : MonoBehaviour
 {
     //[SerializeField] private string apiUrl = "https://dummyjson.com/products";
-    private string apiUrl = "https://dummyjson.com/products?limit=12&skip=12";
+    //private string apiUrl = "https://dummyjson.com/products?limit=12&skip=12";
+    private string apiUrl = "https://dummyjson.com/products?limit=12&skip=";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
+    private int pageInteger;
+    private int elementsInPage = 12;
     
 
     void Start()
     {
-        StartCoroutine(FetchProducts());
+        pageInteger = 1;
+        string skipElements = (pageInteger * elementsInPage).ToString();
+        StartCoroutine(FetchProducts(skipElements));
         ButtonRight.Instance.OnRightButtonClicked += ButtonNextPrev_OnRightButtonClicked;
         ButtonLeft.Instance.OnLeftButtonClicked += ButtonNextPrev_nLeftButtonClicked;
     }
@@ -24,16 +29,22 @@ public class ProductManager : MonoBehaviour
     private void ButtonNextPrev_OnRightButtonClicked(object sender, EventArgs e)
     {
         Debug.Log("right button clicked");
+        pageInteger++;
+        string skipElements = (pageInteger * elementsInPage).ToString();
+        StartCoroutine(FetchProducts(skipElements));
     }
 
     private void ButtonNextPrev_nLeftButtonClicked(object sender, EventArgs e)
     {
         Debug.Log("left button clicked");
+        pageInteger--;
+        string skipElements = (pageInteger * elementsInPage).ToString();
+        StartCoroutine(FetchProducts(skipElements));
     }
 
-    IEnumerator FetchProducts()
+    IEnumerator FetchProducts(string skipElements)
     {
-        UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+        UnityWebRequest request = UnityWebRequest.Get(apiUrl + skipElements);
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
@@ -50,6 +61,12 @@ public class ProductManager : MonoBehaviour
 
     void DisplayProducts(List<Product> products)
     {
+        // Clear previous products
+        foreach (Transform child in contentParent)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach (var product in products)
         {
             GameObject productGO = Instantiate(productPrefab, contentParent);
