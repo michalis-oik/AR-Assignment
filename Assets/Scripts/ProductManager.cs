@@ -31,9 +31,9 @@ public class ProductManager : MonoBehaviour
     private void ButtonNextPrev_OnRightButtonClicked(object sender, EventArgs e)
     {
         pageInteger++;
-        pageNumberText.text = "Page " + pageInteger;
         string skipElements = ((pageInteger-1) * elementsInPage).ToString();
         StartCoroutine(FetchProducts(skipElements));
+        pageNumberText.text = "Page " + pageInteger;
     }
 
     private void ButtonNextPrev_nLeftButtonClicked(object sender, EventArgs e)
@@ -60,7 +60,7 @@ public class ProductManager : MonoBehaviour
         {
             var jsonResponse = request.downloadHandler.text;
             ProductList productList = JsonUtility.FromJson<ProductList>(jsonResponse);
-            DisplayProducts(productList.products);
+            DisplayProducts(productList.products);     
         }
     }
 
