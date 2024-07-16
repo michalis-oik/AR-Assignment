@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ProductSearchManager : MonoBehaviour
 {
     [SerializeField] private string searchUrl = "https://dummyjson.com/products/search?q=";
-    [SerializeField] private string searchUrlEnd = "&limit=10&skip=0";
+    [SerializeField] private string searchUrlEnd = "&limit=12&skip=0";
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform contentParent;
     [SerializeField] private TMP_InputField searchInput;
